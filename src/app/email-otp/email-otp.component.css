@@ -1,0 +1,64 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+}
+
+input {
+  padding: 0.6rem;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.otp_btn {
+  margin: auto;
+  display: block;
+  margin-top: 15px;
+  padding: 0.5rem 2.8rem;
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+.otp_btn[disabled] {
+  cursor: not-allowed;
+}
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+
+.timer {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.email_text {
+  display: flex;
+}
+
+.email_text h2 {
+  color: #ccc;
+}
+
+.email_text a {
+  margin-top: 24px;
+  float: right;
+  color: #ccc;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.loggedinview {
+  color: #90ee90;
+  margin-top: 150px;
+}

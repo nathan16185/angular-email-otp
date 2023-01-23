@@ -1,0 +1,33 @@
+<form class="form" [formGroup]="emailForm">
+  <div *ngIf="editMode&&!loggedIn">
+    <h1 style="color:#ccc">Generate OTP</h1>
+    <input type="email" id="email" placeholder="Enter Email" formControlName="email"/>
+    <div *ngIf="!emailForm.get('email').valid&&emailForm.get('email').touched" style="margin-top: 8px;">
+      <span style="color:red;font-size: 12px;
+    font-weight: bold;" 
+    >
+      Please enter a valid email address.
+      </span>
+    </div>
+    <div *ngIf="otpVerificationError"><span style="color:red;font-size: 12px;
+    font-weight: bold;">You have exceeded the maximum tries for OTP verification. Please try again with new OTP.</span></div>
+    <button *ngIf="!showResendBtn" [disabled]="diableBtn('email')" class="btn otp_btn" (click)="sendOTP()">Generate OTP</button>
+    <button *ngIf="showResendBtn" [disabled]="diableBtn('email')" class="btn otp_btn" (click)="sendOTP()">Resend OTP</button>
+    
+  </div>
+  <div class="otpverify" style="margin-left:65px" *ngIf="!editMode&&!loggedIn">
+    <h1 style="color:#ccc">Verify OTP</h1>
+    <div class="email_text">
+      <h2>Email: {{emailForm.get('email').value}}</h2>
+      <a (click)="changeEmail($event)" style="margin-top:24px;float:right;color:#ccc;margin-left:15px" href="javascript:void(0)">Edit</a>
+    </div>
+    <input type="text" maxlength="6" placeholder="Enter OTP" formControlName="otp">
+    <div style="color:#ccc" class="timer">{{displayTimer}}</div>
+    <button *ngIf="!editMode" [disabled]="diableBtn('otp')" (click)="onVerifyOTP()" class="btn otp_btn" id="otp btn">Verify OTP</button>
+    <div *ngIf="otpError"><span style="color:red">Invalid OTP</span></div>
+  </div>
+  <div class="loggedinview" *ngIf="loggedIn">
+    <app-home-page [email]="emailForm.get('email').value" (logOutuser)="logOut()"></app-home-page>
+  </div>
+  
+</form>
